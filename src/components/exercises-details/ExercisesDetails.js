@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Divider,
   List,
   ListItem,
@@ -27,8 +28,6 @@ function ExercisesDetails({ open, handleClose, currentExercise }) {
     <Modal
       open={open}
       onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
         {currentExercise && (
@@ -54,12 +53,15 @@ function ExercisesDetails({ open, handleClose, currentExercise }) {
                 flexWrap={"wrap"}
                 alignItems={"flex-start"}
               >
-                <Typography>And also : </Typography>
+                <Typography>Secondary Muscles : </Typography>
                 {currentExercise.secondaryMuscles.map((item) => (
-                  <Typography sx={{ paddingRight: "15px" }}>{item}</Typography>
+                  <Typography sx={{ paddingRight: "10px" }}>{item}</Typography>
                 ))}
               </Box>
             </Stack>
+            <Button size="small" onClick={handleClose}>
+              Close
+            </Button>
           </>
         )}
       </Box>

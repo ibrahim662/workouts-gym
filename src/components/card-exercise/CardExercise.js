@@ -20,6 +20,7 @@ function CardExercise({ exercises }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
+
   const handleOpen = async (exerciseId) => {
     setOpen(true);
     let exercisesData = await fetchData(
@@ -43,6 +44,16 @@ function CardExercise({ exercises }) {
   const endIndex = startIndex + itemsPerPage;
   const displayedExercises = exercises.slice(startIndex, endIndex);
 
+  const style = {
+    borderRadius: "8px",
+    // border: "1px solid #000",
+    "&:hover": {
+      boxShadow: 8,
+    },
+    p: 4,
+    maxWidth: "345px",
+    fontFamily:"Oswald', sans-serif;"
+  };
   return (
     <Box
       display={"flex"}
@@ -60,7 +71,7 @@ function CardExercise({ exercises }) {
         justifyContent={"center"}
       >
         {displayedExercises.map((exercise, i) => (
-          <Card key={i} sx={{ maxWidth: 345 }}>
+          <Card key={i} sx={style}>
             <CardMedia
               component="img"
               alt={exercise.name}
@@ -88,17 +99,6 @@ function CardExercise({ exercises }) {
             <CardActions>
               <Button size="small" onClick={() => handleOpen(exercise.id)}>
                 {" "}
-                Learn More
-              </Button>
-            </CardActions>
-            <ExercisesDetails
-              exercise={exercise}
-              open={open}
-              handleClose={handleClose}
-              currentExercise={currentExercise}
-            />
-            <CardActions>
-              <Button size="small" onClick={() => handleOpen(exercise.id)}>
                 Learn More
               </Button>
             </CardActions>
